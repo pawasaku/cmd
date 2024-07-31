@@ -83,7 +83,19 @@ CopyrightLabel.Name = "CopyrightLabel"
 CopyrightLabel.Size = UDim2.new(1, 0, 0, 20)
 CopyrightLabel.Position = UDim2.new(0, 0, 0, 40)
 CopyrightLabel.BackgroundTransparency = 1
-CopyrightLabel.Text = "Roundix corporation. All rights reserved"
+CopyrightLabel.Text = "zinnyx corporation. All rights reserved"
+CopyrightLabel.TextColor3 = Color3.new(1, 1, 1)
+CopyrightLabel.TextStrokeTransparency = 0
+CopyrightLabel.Font = Enum.Font.SourceSans
+CopyrightLabel.TextSize = 14
+CopyrightLabel.Parent = MainFrame
+
+local CopyrightLabel = Instance.new("TextLabel")
+CopyrightLabel.Name = "CopyrightLabel"
+CopyrightLabel.Size = UDim2.new(1, 0, 0, 20)
+CopyrightLabel.Position = UDim2.new(0, 0, 0, 60)
+CopyrightLabel.BackgroundTransparency = 1
+CopyrightLabel.Text = "wanna your custom cursor id? - cursor ID (example - cursor 12642912086)"
 CopyrightLabel.TextColor3 = Color3.new(1, 1, 1)
 CopyrightLabel.TextStrokeTransparency = 0
 CopyrightLabel.Font = Enum.Font.SourceSans
@@ -174,6 +186,20 @@ local secretCommands = {
     end,
     ["iy"] = function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end,
+    ["cursor"] = function(arg)
+        if game:GetService("RunService"):IsClient() then
+            local player = game:GetService("Players").LocalPlayer
+            if player:FindFirstChild("DataFolder") then
+                local dataFolder = player.DataFolder
+                if dataFolder:FindFirstChild("CursorImage") then
+                    local value = tonumber(arg)
+                    if value then
+                        dataFolder.CursorImage.Value = value
+                    end
+                end
+            end
+        end
     end,
 }
 
